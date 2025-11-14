@@ -26,4 +26,6 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           push: true
-          tags: x01code/git-dumper:${{  github.ref_name }}
+          tags: |
+            x01code/git-dumper::latest
+            x01code/git-dumper:${{  github.ref_name }}
