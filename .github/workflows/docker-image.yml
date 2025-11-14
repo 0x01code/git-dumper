@@ -14,7 +14,7 @@ jobs:
 
       - name: Get tag name
         id: get_tag
-        run: echo "TAG_NAME=v${{  github.ref_name }}"
+        run: echo "TAG_NAME=${{  github.ref_name }}"
 
       - name: Build the Docker image
-        run: docker build . --file Dockerfile --tag git-dumper:$TAG_NAME
+        run: docker build . --file Dockerfile --tag x01code/git-dumper:${{  github.ref_name }}
