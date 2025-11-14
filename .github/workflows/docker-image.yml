@@ -3,23 +3,18 @@ name: Docker Image CI
 on:
   push:
     tags:
-      - 'v*'
+      - "v.[0-9]+.[0-9]+.[0-9]+"
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Get tag name
-      id: get_tag
-      run: echo "TAG_NAME=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+      - name: Get tag name
+        id: get_tag
+        run: echo "TAG_NAME=v${{  github.ref_name }}"
 
-    - name: Print tag name
-      run: echo "Pushed tag $GITHUB_OUTPUT"
-      
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag git-dumper:$GITHUB_OUTPUT
+      - name: Build the Docker image
+        run: docker build . --file Dockerfile --tag git-dumper:$TAG_NAME
