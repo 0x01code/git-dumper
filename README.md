@@ -24,18 +24,11 @@ python3 git_dumper.py https://example.com ./dump
 ### Method 2: Using Docker
 
 ```bash
-# Build image
-docker build -t git-dumper .
-```
-
-### Using Docker
-
-```bash
 # Method 1: Docker run
-docker run --rm -v $(pwd)/output:/app/output git-dumper http://target.com/.git
+docker run --rm -v $(pwd)/output:/app/output x01code/git-dumper http://target.com/.git
 
 # View help
-docker run --rm git-dumper --help
+docker run --rm x01code/git-dumper --help
 ```
 
 ## Post-Dump Steps
